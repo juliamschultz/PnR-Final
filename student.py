@@ -54,8 +54,11 @@ class GoPiggy(pigo.Pigo):
             set_speed(x)
             self.encB(5)
             self.encR(20)
+            servo(150)
             self.encL(5)
             self.encF(10)
+            servo(100)
+
 
 
     # AUTONOMOUS DRIVING
