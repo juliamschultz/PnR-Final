@@ -74,10 +74,11 @@ class GoPiggy(pigo.Pigo):
         self.encR(16)
         self.encL(10)
         self.encF(10)
-        right_rot(18)
+        right_rot()
         time.sleep(1)
-        left_rot(10)
+        left_rot()
         time.sleep(1)
+        self.stop()
 
     # AUTONOMOUS DRIVING
     def nav(self):
