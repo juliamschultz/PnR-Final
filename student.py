@@ -52,12 +52,17 @@ class GoPiggy(pigo.Pigo):
             time.sleep(.1)
         set_speed(100)
         self.encB(5)
-        set_speed(240)
+        set_speed(225)
         self.encR(20)
         servo(150)
-        self.encL(5)
+        servo(125)
+        self.encL(7)
         self.encF(10)
-        servo(100)
+        servo(40)
+        set_speed(75)
+        self.encR(15)
+        set_speed(225)
+        self.encL(10)
 
 
 
