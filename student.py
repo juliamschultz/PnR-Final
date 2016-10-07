@@ -65,11 +65,14 @@ class GoPiggy(pigo.Pigo):
         self.encF(9)
         self.encB(4)
         self.encF(5)
-        for x in range(15):
+        for x in range(10):
             self.encR(2)
             self.encL(2)
         self.encB(25)
         self.encR(50)
+        set_speed(175)\
+        self.encR(16)
+        self.encL(10)
 
 
 
