@@ -50,14 +50,14 @@ class GoPiggy(pigo.Pigo):
         for x in range(self.MIDPOINT-20, self.MIDPOINT+20, 5):
             servo(x)
             time.sleep(.1)
-        for x in range(100, 220, 30):
-            set_speed(x)
-            self.encB(5)
-            self.encR(20)
-            servo(150)
-            self.encL(5)
-            self.encF(10)
-            servo(100)
+        set_speed(100)
+        self.encB(5)
+        set_speed(240)
+        self.encR(20)
+        servo(150)
+        self.encL(5)
+        self.encF(10)
+        servo(100)
 
 
 
