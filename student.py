@@ -50,12 +50,12 @@ class GoPiggy(pigo.Pigo):
         for x in range(self.MIDPOINT-20, self.MIDPOINT+20, 5):
             servo(x)
             time.sleep(.1)
-        for x in range(100, 220, 25):
+        for x in range(100, 220, 30):
             set_speed(x)
             self.encB(5)
             self.encR(20)
             self.encL(5)
-            self.encF(5)
+            self.encF(10)
 
 
     # AUTONOMOUS DRIVING
