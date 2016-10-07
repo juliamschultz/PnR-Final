@@ -70,13 +70,9 @@ class GoPiggy(pigo.Pigo):
             self.encL(2)
         self.encB(25)
         self.encR(50)
-        set_speed(175)\
+        set_speed(175)
         self.encR(16)
         self.encL(10)
-
-
-
-
 
     # AUTONOMOUS DRIVING
     def nav(self):
