@@ -77,7 +77,7 @@ class GoPiggy(pigo.Pigo):
             self.encR(16)
             self.encL(10)
             if self.isClear():
-                self.encF(10)
+                self.encF(20)
                 right_rot()
                 time.sleep(1)
                 left_rot()
