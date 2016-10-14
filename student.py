@@ -77,6 +77,7 @@ class GoPiggy(pigo.Pigo):
             self.encR(16)
             self.encL(10)
             if self.isClear():
+                print("Dance On!!!")
                 self.encF(20)
                 right_rot()
                 time.sleep(1)
