@@ -76,11 +76,12 @@ class GoPiggy(pigo.Pigo):
             set_speed(175)
             self.encR(16)
             self.encL(10)
-            self.encF(10)
-            right_rot()
-            time.sleep(1)
-            left_rot()
-            time.sleep(1)
+            if self.isClear():
+                self.encF(10)
+                right_rot()
+                time.sleep(1)
+                left_rot()
+                time.sleep(1)
         self.stop()
 
     # AUTONOMOUS DRIVING
