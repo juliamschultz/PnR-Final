@@ -89,6 +89,11 @@ class GoPiggy(pigo.Pigo):
     def nav(self):
         print("Piggy nav")
         ##### WRITE YOUR FINAL PROJECT HERE
+        #TODO: If while loop fails, check for other paths
+        #loop: check that it is clear
+        while self.isClear():
+            #Let's go forward a little bit
+            self.encF(10)
 
 
 ####################################################
