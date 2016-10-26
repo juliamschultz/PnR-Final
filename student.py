@@ -97,7 +97,7 @@ class GoPiggy(pigo.Pigo):
             answer = self.choosePath()
             if answer == "left":
                 #changing turn speed
-                set.speed(60)
+                set.speed(30)
                 self.encL(8)
             elif answer == "right":
                 self.encR(8)
