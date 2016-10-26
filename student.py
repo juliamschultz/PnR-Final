@@ -96,7 +96,6 @@ class GoPiggy(pigo.Pigo):
             #TODO make robot scan faster
             answer = self.choosePath()
             if answer == "left":
-                #TODO robot turns too much, change the amount that it rotates
                 self.encL(4)
             elif answer == "right":
                 self.encR(4)
