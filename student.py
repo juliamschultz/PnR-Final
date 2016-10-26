@@ -88,9 +88,6 @@ class GoPiggy(pigo.Pigo):
     # AUTONOMOUS DRIVING
     def nav(self):
         print("Piggy nav")
-        ##### WRITE YOUR FINAL PROJECT HERE
-        #TODO: If while loop fails, check for other paths
-        #loop: check that it is clear
 
         while True:
             while self.isClear():
