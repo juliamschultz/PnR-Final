@@ -88,7 +88,6 @@ class GoPiggy(pigo.Pigo):
     # AUTONOMOUS DRIVING
     def nav(self):
         print("Piggy nav")
-
         while True:
             while self.isClear():
                 # move forward a little bit
