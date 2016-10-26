@@ -93,8 +93,11 @@ class GoPiggy(pigo.Pigo):
                 # move forward a little bit
                 self.encF(10)
             #checking for alternate routes
+            #TODO make robot scan faster
             answer = self.choosePath()
             if answer == "left":
+                #changing turn speed
+                set.speed(60)
                 self.encL(8)
             elif answer == "right":
                 self.encR(8)
