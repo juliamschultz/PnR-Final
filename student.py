@@ -91,12 +91,14 @@ class GoPiggy(pigo.Pigo):
         while True:
             while self.isClear():
                 # move forward a little bit
+                # TODO try and make is so when the robot scans it wont go forward if it is closer than a set distance
                 self.encF(10)
             #checking for alternate routes
-            #TODO make robot scan faster
             answer = self.choosePath()
+            #moves left if average is larger
             if answer == "left":
                 self.encL(4)
+            #moves right if average is larger
             elif answer == "right":
                 self.encR(4)
 
