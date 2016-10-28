@@ -93,6 +93,7 @@ class GoPiggy(pigo.Pigo):
             while self.isClear():
                 # move forward a little bit
                 # autonomous driving
+                #TODO figure out how to make head go back forward
                 servo(97)
                 self.testDrive()
                 servo(97)
