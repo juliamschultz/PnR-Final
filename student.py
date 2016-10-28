@@ -99,10 +99,10 @@ class GoPiggy(pigo.Pigo):
             answer = self.choosePath()
             #moves left if average is larger
             if answer == "left":
-                self.encL(4)
+                self.encL(2)
             #moves right if average is larger
             elif answer == "right":
-                self.encR(4)
+                self.encR(2)
 
     # Test drive
     def testDrive(self):
