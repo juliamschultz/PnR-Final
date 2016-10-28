@@ -109,7 +109,7 @@ class GoPiggy(pigo.Pigo):
         print ("Here I go!")
         fwd()
         while True:
-            if us_dist(15) < self.STOP_DIST:
+            if us_dist(20) < self.STOP_DIST:
                 print("STOP STOP STOP")
                 break
             time.sleep(.05)
