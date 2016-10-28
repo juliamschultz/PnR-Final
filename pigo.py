@@ -147,7 +147,7 @@ class Pigo(object):
             time.sleep(.01)
 
     def isClear(self) -> bool:
-        for x in range((self.MIDPOINT - 15), (self.MIDPOINT + 15), 5):
+        for x in range((self.MIDPOINT - 55), (self.MIDPOINT + 55), 5):
             servo(x)
             time.sleep(.1)
             scan1 = us_dist(15)
@@ -219,6 +219,21 @@ class Pigo(object):
                     time.sleep(.01)
                 else:
                     print("Midpoint now saved to: " + str(self.MIDPOINT))
+                    break
+        response = input("Do you want to check if I'm driving straight? (y/n)")
+        if response == 'y':
+
+            while True:
+                set_left_speed(self.LEFT_SPEED)
+                set_right_speed(self.RIGHT_SPEED)
+                print("Left: " + str(self.LEFT_SPEED) + "Right: " + str(self.RIGHT_SPEED))
+                self.encF(9)
+                response = input("Reduce left, reduce right or done? (l/r/d): ")
+                if response == 'l':
+                    self.LEFT_SPEED -= 5
+                elif response == 'r':
+                    self.RIGHT_SPEED -= 5
+                else:
                     break
         response = input("Do you want to check if I'm driving straight? (y/n)")
         if response == 'y':
