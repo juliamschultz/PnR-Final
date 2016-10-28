@@ -95,7 +95,7 @@ class GoPiggy(pigo.Pigo):
                 # autonomous driving
                 servo(97)
                 self.testDrive()
-                    servo(97)
+                servo(97)
             #checking for alternate routes
             answer = self.choosePath()
             #moves left if average is larger
