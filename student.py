@@ -91,8 +91,8 @@ class GoPiggy(pigo.Pigo):
         while True:
             while self.isClear():
                 # move forward a little bit
-                # TODO try and make is so when the robot scans it wont go forward if it is closer than a set distance
-                self.encF(10)
+                # autonomous driving
+                self.testDrive()
             #checking for alternate routes
             answer = self.choosePath()
             #moves left if average is larger
@@ -108,8 +108,10 @@ class GoPiggy(pigo.Pigo):
         fwd()
         while true:
             if us_dist(15) < self.STOP_DIST:
+                print("STOP STOP STOP")
                 break
             time.sleep(.05)
+            print("it's clear, I guess I'll keep going")
         self.stop()
 ####################################################
 ############### STATIC FUNCTIONS
