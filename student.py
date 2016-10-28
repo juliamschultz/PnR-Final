@@ -93,8 +93,8 @@ class GoPiggy(pigo.Pigo):
             while self.isClear():
                 # move forward a little bit
                 # autonomous driving
-                self.testDrive()
                 servo(97)
+                self.testDrive()
             #checking for alternate routes
             answer = self.choosePath()
             #moves left if average is larger
