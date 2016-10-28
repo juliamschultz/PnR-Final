@@ -107,7 +107,7 @@ class GoPiggy(pigo.Pigo):
     def testDrive(self):
         print ("Here I go!")
         fwd()
-        while true:
+        while True:
             if us_dist(15) < self.STOP_DIST:
                 print("STOP STOP STOP")
                 break
