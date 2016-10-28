@@ -102,7 +102,15 @@ class GoPiggy(pigo.Pigo):
             elif answer == "right":
                 self.encR(4)
 
-
+    # Test drive
+    def testDrive(self):
+        print ("Here I go!")
+        fwd()
+        while true:
+            if us_dist(15) < self.STOP_DIST:
+                break
+            time.sleep(.05)
+        self.stop()
 ####################################################
 ############### STATIC FUNCTIONS
 
