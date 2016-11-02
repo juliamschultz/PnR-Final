@@ -95,20 +95,20 @@ class GoPiggy(pigo.Pigo):
                 # autonomous driving
                 #TODO figure out how to make head go back forward
                 servo(97)
-                print "driving straight until I can't"
+                print ("driving straight until I can't")
                 self.testDrive()
                 servo(97)
-                print "something is in my way"
+                print ("something is in my way")
             #checking for alternate routes
             answer = self.choosePath()
-            print "I found a new path!"
+            print ("I found a new path!")
             #moves left if average is larger
             if answer == "left":
                 self.encL(2)
             #moves right if average is larger
             elif answer == "right":
                 self.encR(2)
-                print "and back to the top"
+                print ("and back to the top")
 
     # Test drive
     def testDrive(self):
