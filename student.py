@@ -155,12 +155,12 @@ class GoPiggy(pigo.Pigo):
 
         ###print(" Choice " + str(count) + " is at " + str(x) + " degrees. ")
 
-        menu = {"1": (" Direction " + str(x), self.leftTurn4),
-                "2": (" Direction " + str(x), self.leftTurn2),
-                "3": (" Direction " + str(x), self.forward4),
-                "4": (" Direction " + str(x), self.forward8),
-                "5": (" Direction " + str(x), self.rightTurn2),
-                "6": (" Direction " + str(x), self.rightTurn4)
+        menu = {"1": (" left 4 " + str(x), self.leftTurn4),
+                "2": (" left 2 " + str(x), self.leftTurn2),
+                "3": (" forward 4  " + str(x), self.forward4),
+                "4": (" forward 8 " + str(x), self.forward8),
+                "5": (" right 2 " + str(x), self.rightTurn2),
+                "6": (" right 4 " + str(x), self.rightTurn4)
                 }
         for key in sorted(menu.keys()):
             print(key + ":" + menu[key][0])
