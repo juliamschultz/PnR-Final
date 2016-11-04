@@ -152,6 +152,8 @@ class GoPiggy(pigo.Pigo):
                 print("Found an option from " + str(x - 20) + " to " + str(x) + " degrees")
                 count = 0
                 option.append(x)
+                #calls dataBase method
+                print ("let's choose a better way")
                 self.dataBase()
 
         ###print(" Choice " + str(count) + " is at " + str(x) + " degrees. ")
