@@ -17,6 +17,10 @@ class GoPiggy(pigo.Pigo):
     RIGHT_SPEED = 195
     LEFT_SPEED = 185
 
+    def setSpeed(self, l, r):
+        set_left_speed(l)
+        set_right_speed(r)
+
     # CONSTRUCTOR
     def __init__(self):
         print("Piggy has be instantiated!")
