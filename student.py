@@ -160,7 +160,9 @@ class GoPiggy(pigo.Pigo):
                 "3": (" forward 4  " + str(x), self.forward4),
                 "4": (" forward 8 " + str(x), self.forward8),
                 "5": (" right 2 " + str(x), self.rightTurn2),
-                "6": (" right 4 " + str(x), self.rightTurn4)
+                "6": (" right 4 " + str(x), self.rightTurn4),
+                "n": ("return to test drive", self.testDrive),
+                "q": ("go back to main menu"), self.handler)
                 }
         for key in sorted(menu.keys()):
             print(key + ":" + menu[key][0])
