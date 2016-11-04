@@ -21,6 +21,10 @@ class GoPiggy(pigo.Pigo):
         set_left_speed(l)
         set_right_speed(r)
 
+    #method to make my robot drive backwards to I don't have to pick it up everytime
+    def lazy(self):
+        self.encB(10)
+
     # CONSTRUCTOR
     def __init__(self):
         print("Piggy has be instantiated!")
@@ -41,6 +45,7 @@ class GoPiggy(pigo.Pigo):
                 "3": ("Dance", self.dance),
                 "4": ("Calibrate servo", self.calibrate),
                 "5": ("test drive", self.testDrive),
+                "6": ("Julia is lazy", self.lazy),
                 "q": ("Quit", quit)
                 }
         # loop and print the menu...
