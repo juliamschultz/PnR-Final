@@ -162,6 +162,11 @@ class GoPiggy(pigo.Pigo):
                 "5": (" Direction " + str(x), self.rightTurn2),
                 "6": (" Direction " + str(x), self.rightTurn4)
                 }
+        for key in sorted(menu.keys()):
+            print(key + ":" + menu[key][0])
+        #
+        ans = input("Your selection: ")
+        menu.get(ans, [None, error])[1]()
 
     def rightTurn4(self):
         self.encR(4)
@@ -181,11 +186,7 @@ class GoPiggy(pigo.Pigo):
     def forward8(self):
         self.encF(8)
     # loop and print the menu...
-    for key in sorted(menu.keys()):
-        print(key + ":" + menu[key][0])
-    #
-    ans = input("Your selection: ")
-    menu.get(ans, [None, error])[1]()
+
 ####################################################
 ############### STATIC FUNCTIONS
 
