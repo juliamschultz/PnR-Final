@@ -15,7 +15,7 @@ class GoPiggy(pigo.Pigo):
     MIDPOINT = 97
     STOP_DIST = 30
     RIGHT_SPEED = 195
-    LEFT_SPEED = 110
+    LEFT_SPEED = 113
 
     def setSpeed(self, l, r):
         set_left_speed(l)
