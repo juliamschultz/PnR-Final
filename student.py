@@ -21,7 +21,7 @@ class GoPiggy(pigo.Pigo):
         set_left_speed(l)
         set_right_speed(r)
 
-    #method to make my robot drive backwards to I don't have to pick it up everytime
+    #method to make my robot drive backwards to I don't have to pick it up everytime when I have to make sure that it is calibrated
     def lazy(self):
         self.encB(10)
 
@@ -46,6 +46,7 @@ class GoPiggy(pigo.Pigo):
                 "4": ("Calibrate servo", self.calibrate),
                 "5": ("test drive", self.testDrive),
                 "6": ("Julia is lazy", self.lazy),
+                "7": ("Choose better", self.chooseBetter),
                 "q": ("Quit", quit)
                 }
         # loop and print the menu...
@@ -105,7 +106,6 @@ class GoPiggy(pigo.Pigo):
             while self.isClear():
                 # move forward a little bit
                 # autonomous driving
-                #TODO figure out how to make head go back forward
                 servo(97)
                 print ("driving straight until I can't")
                 self.testDrive()
@@ -133,6 +133,59 @@ class GoPiggy(pigo.Pigo):
             time.sleep(.05)
             print("it's clear, I guess I'll keep going")
         self.stop()
+
+    def chooseBetter(self):
+        self.flushScan()
+        for x in range(self.MIDPOINT - 60, self.MIDPOINT + 60, 2):
+            servo(x)
+            time.sleep(.1)
+            self.scan[x] = us_dist(15)
+            time.sleep(.05)
+        count = 0
+        option = [0]
+        for x in range(self.MIDPOINT - 60, self.MIDPOINT + 60, 2):
+            if self.scan[x] > self.STOP_DIST:
+                count += 1
+            else:
+                count = 0
+            if count > 9:
+                print("Found an option from " + str(x - 20) + " to " + str(x) + " degrees")
+                count = 0
+                option.append(x)
+
+        ###print(" Choice " + str(count) + " is at " + str(x) + " degrees. ")
+
+        menu = {"1": (" Direction " + str(x), self.leftTurn4),
+                "2": (" Direction " + str(x), self.leftTurn2),
+                "3": (" Direction " + str(x), self.forward4),
+                "4": (" Direction " + str(x), self.forward8),
+                "5": (" Direction " + str(x), self.rightTurn2),
+                "6": (" Direction " + str(x), self.rightTurn4)
+                }
+
+        def rightTurn4(self):
+            self.encR(4)
+
+        def rightTurn2(self):
+            self.encR(2)
+
+        def leftTurn4(self):
+            self.encL(4)
+
+        def leftTurn2(self):
+            self.encL(2)
+
+        def forward4(self):
+            self.encF(4)
+
+        def forward8(self):
+            self.encF(8)
+        # loop and print the menu...
+        for key in sorted(menu.keys()):
+            print(key + ":" + menu[key][0])
+        #
+        ans = input("Your selection: ")
+        menu.get(ans, [None, error])[1]()
 ####################################################
 ############### STATIC FUNCTIONS
 
