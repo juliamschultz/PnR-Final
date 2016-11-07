@@ -14,7 +14,7 @@ class GoPiggy(pigo.Pigo):
     # You may want to add a variable to store your default speed
     MIDPOINT = 97
     STOP_DIST = 30
-    RIGHT_SPEED = 195
+    RIGHT_SPEED = 150
     LEFT_SPEED = 113
 
     def setSpeed(self, l, r):
@@ -106,12 +106,12 @@ class GoPiggy(pigo.Pigo):
             while self.isClear():
                 # move forward a little bit
                 # autonomous driving
-                servo(97)
                 print ("driving straight until I can't")
                 self.testDrive()
                 servo(97)
                 print ("something is in my way")
             #checking for alternate routes
+            #TODO figure out why its doesnt drive until there is something in the way
             answer = self.choosePath()
             print ("I found a new path!")
             #moves left if average is larger
