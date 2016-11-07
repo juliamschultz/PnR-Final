@@ -107,8 +107,8 @@ class GoPiggy(pigo.Pigo):
                 # move forward a little bit
                 # autonomous driving
                 print ("driving straight until I can't")
-                self.testDrive()
                 servo(97)
+                self.testDrive()
                 print ("something is in my way")
             #checking for alternate routes
             #TODO figure out why its doesnt drive until there is something in the way
