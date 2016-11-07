@@ -112,7 +112,9 @@ class GoPiggy(pigo.Pigo):
                 print ("something is in my way")
             #checking for alternate routes
             #TODO figure out why its doesnt drive until there is something in the way
-            answer = self.choosePath()
+            answer = self.chooseBetter()
+            #TODO try and make it so it wont go in the opposite direction that it is supposed to (basically make it not turn right or left for than two times in a row)
+            #TODO figure out why it turns when it can clearly go straight
             print ("I found a new path!")
             #moves left if average is larger
             if answer == "left":
