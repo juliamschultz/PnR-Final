@@ -109,7 +109,7 @@ class GoPiggy(pigo.Pigo):
     ##################################
     #######takes number of degrees and turns right accordingly#############
     def turnR(self, deg):
-        self.turn_track += tt
+        self.turn_track += deg
         print("the exit is " + str(self.turn_track) + " degrees away.")
         # using the modifier
         self.setSpeed(self.LEFT_SPEED * self.TURN_MODIFIER,
