@@ -160,10 +160,10 @@ class GoPiggy(pigo.Pigo):
             print ("I found a new path!")
             #moves left if average is larger
             if answer == "left":
-                self.turnL(20)
+                self.turnL(15)
             #moves right if average is larger
             elif answer == "right":
-                self.turnR(20)
+                self.turnR(15)
                 print ("and back to the top")
 
     # Test drive
