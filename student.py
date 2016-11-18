@@ -156,7 +156,8 @@ class GoPiggy(pigo.Pigo):
                 self.testDrive()
                 print ("testDrive ended.")
             #checking for alternate route
-            answer = self.choosePath2()
+            self.tooClose()
+            answer = self.choosePath()
             print ("I found a new path!")
             #TODO try and figure out how to make it so that if it really close to an object it will back up a little bit so it makes better turns
             #moves left if average is larger
@@ -167,29 +168,12 @@ class GoPiggy(pigo.Pigo):
                 self.turnR(15)
                 print ("and back to the top")
 
-    #new method to make the robot back up before it makes its turn
-    def choosePath2(self) -> str:
-        print('Considering options...')
-        if self.isClear():
-            return "fwd"
-        else:
-            self.wideScan()
-        avgRight = 0
-        avgLeft = 0
-        for x in range(self.MIDPOINT - 60, self.MIDPOINT):
-            if self.scan[x]:
-                avgRight += self.scan[x]
-        avgRight /= 60
-        print('The average dist on the right is ' + str(avgRight) + 'cm')
-        for x in range(self.MIDPOINT, self.MIDPOINT + 60):
-            if self.scan[x]:
-                avgLeft += self.scan[x]
-        avgLeft /= 60
-        print('The average dist on the left is ' + str(avgLeft) + 'cm')
-        if avgRight > avgLeft:
-            return "right"
-        else:
-            return "left"
+
+    def tooClose(self):
+        servo(self.MIDPOINT)
+        time.sleep(.05)
+        if us_dist(15) <= 10:
+            self.encB(8)
 
     # Test drive
     def testDrive(self):
