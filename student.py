@@ -14,8 +14,13 @@ class GoPiggy(pigo.Pigo):
     # You may want to add a variable to store your default speed
     MIDPOINT = 97
     STOP_DIST = 30
+    TURN_MODIFIER = .75
     RIGHT_SPEED = 150
     LEFT_SPEED = 113
+
+    turn_track = 0.0
+    TIME_PER_DEGREE = .02
+    TURN_MODIFIER = .75
 
     def setSpeed(self, l, r):
         set_left_speed(l)
@@ -99,6 +104,45 @@ class GoPiggy(pigo.Pigo):
                 time.sleep(1)
         self.stop()
 
+    ################################
+    ######### my new turn methods because encoding doesnt work###############
+    ##################################
+    #######takes number of degrees and turns right accordingly#############
+    def turnR(self, deg):
+        self.turn_track += tt
+        print("the exit is " + str(self.turn_track) + " degrees away.")
+        # using the modifier
+        self.setSpeed(self.LEFT_SPEED * self.TURN_MODIFIER,
+                      self.RIGHT_SPEED *self.TURN_MODIFIER)
+        #turning
+        right_rot()
+        time.sleep(deg * self.TIME_PER_DEGREE)
+        self.stop()
+        #setting speed back
+        self.setSpeed(self.LEFT_SPEED, self.RIGHT_SPEED)
+
+
+    def turnL(self, deg):
+        self.turn_track -= deg
+        print("The exit is " + str(self.turn_track) + " degrees away.")
+        #using the modifier
+        self.setSpeed(self.LEFT_SPEED * self.TURN_MODIFIER,
+                      self.RIGHT_SPEED * self.TURN_MODIFIER)
+        #turning
+        left_rot()
+        time.sleep(deg * self.TIME_PER_DEGREE)
+        self.stop()
+        #setting back to normal speed
+        self.setSpeed(self.LEFT_SPEED, self.RIGHT_SPEED)
+
+
+    def setSpeed(self, left, right):
+        print("left speed: " +str(left))
+        print("right speed: " + str(right))
+        set_left_speed(int(left))
+        set_right_speed(int(right))
+        time.sleep(.05)
+
     # AUTONOMOUS DRIVING
     def nav(self):
         print("Piggy nav")
@@ -106,31 +150,29 @@ class GoPiggy(pigo.Pigo):
             while self.isClear():
                 # move forward a little bit
                 # autonomous driving
-                print ("driving straight until I can't")
-                servo(97)
+                print ("isClear passed, I'm driving straight until I can't")
+                servo(self.MIDPOINT)
+                time.sleep(.1)
                 self.testDrive()
-                print ("something is in my way")
-            #checking for alternate routes
-            #TODO figure out why its doesnt drive until there is something in the way
+                print ("testDrive ended.")
+            #checking for alternate route
             answer = self.choosePath()
-            #TODO try and make it so it wont go in the opposite direction that it is supposed to (basically make it not turn right or left for than two times in a row)
-            #TODO figure out why it turns when it can clearly go straight
             print ("I found a new path!")
             #moves left if average is larger
             if answer == "left":
-                self.encL(2)
+                self.turnL(35)
             #moves right if average is larger
             elif answer == "right":
-                self.encR(2)
+                self.turnR(35)
                 print ("and back to the top")
 
     # Test drive
     def testDrive(self):
-        print ("Here I go!")
+        print ("Here I go on a test drive!")
         fwd()
         while True:
             if us_dist(15) < self.STOP_DIST:
-                print("STOP STOP STOP")
+                print("test drive: STOP STOP STOP")
                 break
             time.sleep(.05)
             print("it's clear, I guess I'll keep going")
@@ -174,6 +216,29 @@ class GoPiggy(pigo.Pigo):
         #
         ans = input("Your selection: ")
         menu.get(ans, [None, error])[1]()
+
+    def isClear(self) -> bool:
+        print("Running the isClear method")
+        for x in range((self.MIDPOINT - 5), (self.MIDPOINT + 5), 5):
+            servo(x)
+            time.sleep(.1)
+            scan1 = us_dist(15)
+            time.sleep(.1)
+            # double check the distance
+            scan2 = us_dist(15)
+            time.sleep(.1)
+            # if I found a different distance the second time....
+            if abs(scan1 - scan2) > 2:
+                scan3 = us_dist(15)
+                time.sleep(.1)
+                # take another scan and average the three together
+                scan1 = (scan1 + scan2 + scan3) / 3
+            self.scan[x] = scan1
+            print("Degree: " + str(x) + ", distance: " + str(scan1))
+            if scan1 < self.STOP_DIST:
+                print("isClear says: Doesn't look clear to me")
+                return False
+        return True
 
     def rightTurn4(self):
         self.encR(4)
