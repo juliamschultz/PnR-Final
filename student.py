@@ -144,9 +144,12 @@ class GoPiggy(pigo.Pigo):
         time.sleep(.05)
 
     # AUTONOMOUS DRIVING
+    #central logic loop of my navigation
     def nav(self):
         print("Piggy nav")
+        #main app loop
         while True:
+            #TODO replace choose path with a method that's smarter
             while self.isClear():
                 # move forward a little bit
                 # autonomous driving
@@ -155,13 +158,15 @@ class GoPiggy(pigo.Pigo):
                 time.sleep(.1)
                 self.testDrive()
                 print ("testDrive ended.")
-            #checking for alternate route
+            #back up if you are too close to an object
             self.tooClose()
+            # checking for alternate route
             answer = self.choosePath()
             print ("I found a new path!")
             #TODO try and figure out how to make it so that if it really close to an object it will back up a little bit so it makes better turns
             #moves left if average is larger
             if answer == "left":
+                #TODO replace 15 with a variable representing a smarter option
                 self.turnL(15)
             #moves right if average is larger
             elif answer == "right":
@@ -172,7 +177,7 @@ class GoPiggy(pigo.Pigo):
     def tooClose(self):
         servo(self.MIDPOINT)
         time.sleep(.05)
-        if us_dist(15) <= 10:
+        if us_dist(15) <= 20:
             self.encB(8)
 
     # Test drive
