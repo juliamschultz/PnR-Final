@@ -177,7 +177,7 @@ class GoPiggy(pigo.Pigo):
     def tooClose(self):
         servo(self.MIDPOINT)
         time.sleep(.05)
-        if us_dist(15) <= 20:
+        if us_dist(15) <= 10:
             self.encB(8)
 
     # Test drive
