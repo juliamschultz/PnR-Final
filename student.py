@@ -156,6 +156,8 @@ class GoPiggy(pigo.Pigo):
                 print ("isClear passed, I'm driving straight until I can't")
                 servo(self.MIDPOINT)
                 time.sleep(.1)
+                #added a print statement to see if test drive is working since it doesnt seem to be
+                print ("starting test drive")
                 self.testDrive()
                 print ("testDrive ended.")
             #back up if you are too close to an object
@@ -163,10 +165,8 @@ class GoPiggy(pigo.Pigo):
             # checking for alternate route
             answer = self.choosePath()
             print ("I found a new path!")
-            #TODO try and figure out how to make it so that if it really close to an object it will back up a little bit so it makes better turns
             #moves left if average is larger
             if answer == "left":
-                #TODO replace 15 with a variable representing a smarter option
                 self.turnL(15)
             #moves right if average is larger
             elif answer == "right":
