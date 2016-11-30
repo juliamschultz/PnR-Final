@@ -19,8 +19,8 @@ class GoPiggy(pigo.Pigo):
     LEFT_SPEED = 113
 
     turn_track = 0.0
-    TIME_PER_DEGREE = .02
-    TURN_MODIFIER = .75
+    TIME_PER_DEGREE = .012
+    TURN_MODIFIER = .6
 
     def setSpeed(self, l, r):
         set_left_speed(l)
