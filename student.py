@@ -149,8 +149,7 @@ class GoPiggy(pigo.Pigo):
         print("Piggy nav")
         #main app loop
         while True:
-            #TODO replace choose path with a method that's smarter
-            while self.isClear():
+            if self.isClear():
                 # move forward a little bit
                 # autonomous driving
                 print ("isClear passed, I'm driving straight until I can't")
@@ -163,15 +162,60 @@ class GoPiggy(pigo.Pigo):
             #back up if you are too close to an object
             self.tooClose()
             # checking for alternate route
-            answer = self.choosePath()
-            print ("I found a new path!")
-            #moves left if average is larger
-            if answer == "left":
-                self.turnL(15)
-            #moves right if average is larger
-            elif answer == "right":
-                self.turnR(15)
-                print ("and back to the top")
+            turn_target = self.kenny()
+            if turn_target < 0:
+                self.turnR(abs(turn_target))
+            else:
+                self.turnL(abs(turn_target))
+
+
+    #replacement turn method.  Finding the best option
+    def kenny(self):
+        #using built in wide scan to erase all previous scan data
+        self.wideScan()
+        #count wil keep track of contigeous open readings
+        count = 0
+        #list of all the open paths we detect
+        option = [0]
+        SAFETY_BUFFER = 20
+        #what increment do you have your wide scan set to?
+        INC = 2
+
+        ############################################################
+        ###BUILD THE OPTIONS
+        ############################################################
+        for x in range(self.MIDPOINT - 60, self.MIDPOINT +60):
+            if self.scan[x]:
+                #add number at the end if you want as a safety buffer
+                if self.[x] > (self.STOP_DIST + SAFETY_BUFFER):
+                    count += 1
+                #if the reading isnt safe.....vvvv
+                else:
+                    #have to reset the count and look for a new path
+                    count = 0
+                if count == (20/INC):
+                    #there is enough positive readings in a row to count
+                    print("Found an option from " + str(x - 20) + " to " + str(x))
+                    count = 0
+                    option.append(x - 10)
+
+        #############################################
+        ###PICK FROM OPTIONS
+        #############################################
+        bestoption = 90
+        winner = 0
+        for x in option:
+            #skip our filler option
+            if not x.__index__() == 0:
+                print("Choice # " + str(x.__index__()) + " is@ " + str(x) + " degrees" )
+                ideal = self.turn_track + self.MIDPOINT
+                print("My ideal choice would be " +str(ideal))
+                if bestoption > abs(ideal - x):
+                    bestoption = abs(iedal - x)
+                    winner = x - self.MIDPOINT
+        return winner
+
+
 
 
     def tooClose(self):
