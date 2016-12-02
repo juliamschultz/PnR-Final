@@ -161,7 +161,9 @@ class GoPiggy(pigo.Pigo):
                 print ("testDrive ended.")
             #back up if you are too close to an object
             self.tooClose()
-            # checking for alternate route
+            # checking for alternate route\
+            print('!!!!!!!!!!!!!RUNNING KENNY!!!!!!!!!!!!!')
+            print('!!!!!!!!!!!!!RUNNING KENNY!!!!!!!!!!!!!')
             turn_target = self.kenny()
             if turn_target < 0:
                 self.turnR(abs(turn_target))
@@ -193,7 +195,7 @@ class GoPiggy(pigo.Pigo):
                 else:
                     #have to reset the count and look for a new path
                     count = 0
-                if count == (20/INC):
+                if count > (20/INC) - 1:
                     #there is enough positive readings in a row to count
                     print("Found an option from " + str(x - 20) + " to " + str(x))
                     count = 0
