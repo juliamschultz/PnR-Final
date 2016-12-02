@@ -189,7 +189,7 @@ class GoPiggy(pigo.Pigo):
         for x in range(self.MIDPOINT - 60, self.MIDPOINT +60):
             if self.scan[x]:
                 #add number at the end if you want as a safety buffer
-                if self.[x] > (self.STOP_DIST + SAFETY_BUFFER):
+                if self.scan[x] > (self.STOP_DIST + SAFETY_BUFFER):
                     count += 1
                 #if the reading isnt safe.....vvvv
                 else:
