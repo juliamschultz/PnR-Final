@@ -213,7 +213,7 @@ class GoPiggy(pigo.Pigo):
                 ideal = self.turn_track + self.MIDPOINT
                 print("My ideal choice would be " +str(ideal))
                 if bestoption > abs(ideal - x):
-                    bestoption = abs(iedal - x)
+                    bestoption = abs(ideal - x)
                     winner = x - self.MIDPOINT
         return winner
 
