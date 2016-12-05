@@ -156,12 +156,12 @@ class GoPiggy(pigo.Pigo):
                 servo(self.MIDPOINT)
                 time.sleep(.1)
                 #added a print statement to see if test drive is working since it doesnt seem to be
-                print ("starting test drive")
-                self.testDrive()
-                print ("testDrive ended.")
+                print ("--------starting to cruise---------")
+                self.cruise()
+                print ("--I have stopped cruising--.")
             #back up if you are too close to an object
             self.tooClose()
-            # checking for alternate route\
+            # checking for alternate route
             print('!!!!!!!!!!!!!RUNNING KENNY!!!!!!!!!!!!!')
             print('!!!!!!!!!!!!!RUNNING KENNY!!!!!!!!!!!!!')
             turn_target = self.kenny()
@@ -173,50 +173,64 @@ class GoPiggy(pigo.Pigo):
 
     #replacement turn method.  Finding the best option
     def kenny(self):
-        #using built in wide scan to erase all previous scan data
+        # Activate our scanner!
         self.wideScan()
-        #count wil keep track of contigeous open readings
+        # count will keep track of contigeous positive readings
         count = 0
-        #list of all the open paths we detect
+        # list of all the open paths we detect
         option = [0]
-        SAFETY_BUFFER = 20
-        #what increment do you have your wide scan set to?
+        # YOU DECIDE: What do we add to STOP_DIST when looking for a path fwd?
+        SAFETY_BUFFER = 30
+        # YOU DECIDE: what increment do you have your wideScan set to?
         INC = 2
 
-        ############################################################
-        ###BUILD THE OPTIONS
-        ############################################################
-        for x in range(self.MIDPOINT - 60, self.MIDPOINT +60):
+        ###########################
+        ######### BUILD THE OPTIONS
+        # loop from the 60 deg right of our middle to 60 deg left of our middle
+        for x in range(self.MIDPOINT - 60, self.MIDPOINT + 60):
+            # ignore all blank spots in the list
             if self.scan[x]:
-                #add number at the end if you want as a safety buffer
+                # add 30 if you want, this is an extra safety buffer
                 if self.scan[x] > (self.STOP_DIST + SAFETY_BUFFER):
                     count += 1
-                #if the reading isnt safe.....vvvv
+                # if this reading isn't safe...
                 else:
-                    #have to reset the count and look for a new path
+                    # aww nuts, I have to reset the count, this path won't work
                     count = 0
-                if count > (20/INC) - 1:
-                    #there is enough positive readings in a row to count
-                    print("Found an option from " + str(x - 20) + " to " + str(x))
+                # YOU DECIDE: Is 16 degrees the right size to consider as a safe window?
+                if count > (16 / INC) - 1:
+                    # SUCCESS! I've found enough positive readings in a row
+                    print("---FOUND OPTION: from " + str(x - 16) + " to " + str(x))
+                    # set the counter up again for next time
                     count = 0
-                    option.append(x - 10)
+                    # add this option to the list
+                    option.append(x - 8)
 
-        #############################################
-        ###PICK FROM OPTIONS
-        #############################################
+        ####################################
+        ############## PICK FROM THE OPTIONS - experimental
+
+        # The biggest angle away from our midpoint we could possibly see is 90
         bestoption = 90
-        winner = 0
+        # the turn it would take to get us aimed back toward the exit - experimental
+        ideal = -self.turn_track
+        print("\nTHINKING. Ideal turn: " + str(ideal) + " degrees\n")
+        # x will iterate through all the angles of our path options
         for x in option:
-            #skip our filler option
-            if not x.__index__() == 0:
-                print("Choice # " + str(x.__index__()) + " is@ " + str(x) + " degrees" )
-                ideal = self.turn_track + self.MIDPOINT
-                print("My ideal choice would be " +str(ideal))
-                if bestoption > abs(ideal - x):
-                    bestoption = abs(ideal - x)
-                    winner = x - self.MIDPOINT
-        return winner
-
+            # skip our filler option
+            if x != 0:
+                # the change to the midpoint needed to aim at this path
+                turn = self.MIDPOINT - x
+                # state our logic so debugging is easier
+                print("\nPATH @  " + str(x) + " degrees means a turn of " + str(turn))
+                # if this option is closer to our ideal than our current best option...
+                if abs(ideal - bestoption) > abs(ideal - turn):
+                    # store this turn as the best option
+                    bestoption = turn
+        if bestoption > 0:
+            input("\nABOUT TO TURN RIGHT BY: " + str(bestoption) + " degrees")
+        else:
+            input("\nABOUT TO TURN LEFT BY: " + str(abs(bestoption)) + " degrees")
+        return bestoption
 
 
 
@@ -224,18 +238,24 @@ class GoPiggy(pigo.Pigo):
         servo(self.MIDPOINT)
         time.sleep(.05)
         if us_dist(15) <= 10:
+            print "backing up because I am too close"
             self.encB(8)
 
-    # Test drive
-    def testDrive(self):
-        print ("Here I go on a test drive!")
+    # cruise method
+    def cruise(self):
+        # TODO Extra credit: Upgrade this so it looks around while driving
+        servo(self.MIDPOINT)
+        # give the robot time to move
+        time.sleep(.05)
+        # start driving forward
         fwd()
+        # start an infinite loop
         while True:
+            # break the loop if the sensor reading is closer than our stop dist
             if us_dist(15) < self.STOP_DIST:
-                print("test drive: STOP STOP STOP")
                 break
             time.sleep(.05)
-            print("it's clear, I guess I'll keep going")
+        # stop if the sensor loop broke
         self.stop()
 
     def chooseBetter(self):
@@ -268,7 +288,7 @@ class GoPiggy(pigo.Pigo):
                 "4": (" forward 8 " + str(x), self.forward8),
                 "5": (" right 2 " + str(x), self.rightTurn2),
                 "6": (" right 4 " + str(x), self.rightTurn4),
-                "n": ("return to test drive", self.testDrive),
+                "n": ("return to cruising", self.cruise),
                 "q": ("go back to main menu", self.handler)
                 }
         for key in sorted(menu.keys()):
