@@ -49,7 +49,7 @@ class GoPiggy(pigo.Pigo):
                 "2": ("Rotate", self.rotate),
                 "3": ("Dance", self.dance),
                 "4": ("Calibrate servo", self.calibrate),
-                "5": ("test drive", self.testDrive),
+                "5": ("cruise", self.cruise),
                 "6": ("Julia is lazy", self.lazy),
                 "7": ("Choose better", self.chooseBetter),
                 "q": ("Quit", quit)
