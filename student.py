@@ -238,7 +238,7 @@ class GoPiggy(pigo.Pigo):
         servo(self.MIDPOINT)
         time.sleep(.05)
         if us_dist(15) <= 10:
-            print "backing up because I am too close"
+            print ("backing up because I am too close")
             self.encB(8)
 
     # cruise method
