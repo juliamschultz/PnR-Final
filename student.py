@@ -165,11 +165,13 @@ class GoPiggy(pigo.Pigo):
             print('!!!!!!!!!!!!!RUNNING KENNY!!!!!!!!!!!!!')
             print('!!!!!!!!!!!!!RUNNING KENNY!!!!!!!!!!!!!')
             turn_target = self.kenny()
-            if turn_target < 0:
-                self.turnR(abs(turn_target))
+            # a positive turn is right
+            if turn_target > 0:
+                self.turnR(turn_target)
+            # negative degrees mean left
             else:
+                # let's remove the negative with abs()
                 self.turnL(abs(turn_target))
-
 
     #replacement turn method.  Finding the best option
     def kenny(self):
