@@ -15,7 +15,7 @@ class GoPiggy(pigo.Pigo):
     MIDPOINT = 97
     STOP_DIST = 30
     TURN_MODIFIER = .75
-    RIGHT_SPEED = 150
+    RIGHT_SPEED = 145
     LEFT_SPEED = 113
 
     turn_track = 0.0
