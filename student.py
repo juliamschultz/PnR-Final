@@ -146,10 +146,9 @@ class GoPiggy(pigo.Pigo):
     # AUTONOMOUS DRIVING
     #central logic loop of my navigation
     def nav(self):
-        print("Piggy nav")
+        print("Piggy nav -- LETS GOOO!!!")
         #main app loop
         while True:
-            #TODO replace choose path with a method that's smarter
             while self.isClear():
                 # move forward a little bit
                 # autonomous driving
@@ -157,14 +156,15 @@ class GoPiggy(pigo.Pigo):
                 servo(self.MIDPOINT)
                 time.sleep(.1)
                 #added a print statement to see if test drive is working since it doesnt seem to be
-                print ("starting test drive")
+                print ("-----STARTING TO CRUISE-----")
                 self.testDrive()
                 print ("testDrive ended.")
             #back up if you are too close to an object
             self.tooClose()
+            print ("WAAAYYYY TOOOO CLOSE BACKING UPPPP!!!")
             # checking for alternate route
             answer = self.choosePath()
-            print ("I found a new path!")
+            print ("I found a new path! WOOHOO")
             #moves left if average is larger
             if answer == "left":
                 self.turnL(15)
