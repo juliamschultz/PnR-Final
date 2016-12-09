@@ -12,10 +12,17 @@ head is facing forward, and my left and right speed.
 The lazy method that I created is  kind of self explanatory, and slightly stupid.  When I was calibrating my robot I got **very** tired of having to get up every time and pick up my robot and bring it back.
 I thought to myself, "Wow I wish my robot could magically just come bcak to me".  Then I realized that I could.  Basically, I just made a method to move backwards a little bit and added it to my menu.
 
-`self.cruise()` 
-The cruise method is very important to my code because it makes going through the obstacle course **much** more quick and efficient.  Basically if the robot detects that it is clear straight ahead, it will cruise at a constant speed until it detects something is in its way. 
+`self.testDrive()`
+The cruise method is very important to my code because it makes going through the obstacle course **much** more quick and efficient.
+ Basically if the robot detects that it is clear straight ahead, it will cruise at a constant speed until it detects something is in its way.
 
-`self.backUp()`
-While tinkering with my robot and running it through the course many times I realized that when it was just too close to an object the robot would get sort of confused and get stuck in a loop going back and forth.  That is when I decided to create the back up method so that if it is ever too close the robot will back up
+`self.tooClose()`
+While tinkering with my robot and running it through the course many times I realized that when it was just too close to an object the robot would get sort of confused and get stuck in a loop going back and forth.
+That is when I decided to create the back up method so that if it is ever too close the robot will back up.
+
+`self.chooseBetter()`
+This method is key for my robot to getting through the obstacle course because it is how it determines its turns.  The robot scans from negative 60 degrees to positive 60 degrees and averages the distances.
+After it averages the distances it turns to the side that has the larger average.
+
 
 

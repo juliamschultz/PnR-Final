@@ -21,16 +21,7 @@ class GoPiggy(pigo.Pigo):
     turn_track = 0.0
     TIME_PER_DEGREE = .02
     TURN_MODIFIER = .75
-    #TODO figure out which set speed I should be deleting
-    def setSpeed(self, l, r):
-        set_left_speed(l)
-        set_right_speed(r)
 
-    #method to make my robot drive backwards to I don't have to pick it up everytime when I have to make sure that it is calibrated
-    #TODO change name to something that relates to its function
-    def lazy(self):
-        self.encB(10)
-    #TODO move constructor above the above two methods
     # CONSTRUCTOR
     def __init__(self):
         print("Piggy has be instantiated!")
@@ -42,6 +33,10 @@ class GoPiggy(pigo.Pigo):
             self.stop()
             self.handler()
 
+    #method to make my robot drive backwards to I don't have to pick it up everytime when I have to make sure that it is calibrated
+    def backwards(self):
+        self.encB(10)
+
     ##### HANDLE IT
     def handler(self):
         ## This is a DICTIONARY, it's a list with custom index values
@@ -51,7 +46,7 @@ class GoPiggy(pigo.Pigo):
                 "3": ("Dance", self.dance),
                 "4": ("Calibrate servo", self.calibrate),
                 "5": ("test drive", self.testDrive),
-                "6": ("Julia is lazy", self.lazy),
+                "6": ("Julia is lazy", self.backwards),
                 "7": ("Choose better", self.chooseBetter),
                 "q": ("Quit", quit)
                 }
