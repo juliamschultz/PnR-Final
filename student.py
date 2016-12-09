@@ -21,15 +21,16 @@ class GoPiggy(pigo.Pigo):
     turn_track = 0.0
     TIME_PER_DEGREE = .02
     TURN_MODIFIER = .75
-
+    #TODO figure out which set speed I should be deleting
     def setSpeed(self, l, r):
         set_left_speed(l)
         set_right_speed(r)
 
     #method to make my robot drive backwards to I don't have to pick it up everytime when I have to make sure that it is calibrated
+    #TODO change name to something that relates to its function
     def lazy(self):
         self.encB(10)
-
+    #TODO move constructor above the above two methods
     # CONSTRUCTOR
     def __init__(self):
         print("Piggy has be instantiated!")
@@ -186,8 +187,13 @@ class GoPiggy(pigo.Pigo):
         fwd()
         while True:
             if us_dist(15) < self.STOP_DIST:
+                self.stop()
+                if us_dist(15) < self.STOP_DIST:
                 print("test drive: STOP STOP STOP")
-                break
+                    break
+                else:
+                    fwd()
+                    continue
             time.sleep(.05)
             print("it's clear, I guess I'll keep going")
         self.stop()
