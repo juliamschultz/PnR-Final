@@ -189,7 +189,7 @@ class GoPiggy(pigo.Pigo):
             if us_dist(15) < self.STOP_DIST:
                 self.stop()
                 if us_dist(15) < self.STOP_DIST:
-                print("test drive: STOP STOP STOP")
+                    print("test drive: STOP STOP STOP")
                     break
                 else:
                     fwd()
