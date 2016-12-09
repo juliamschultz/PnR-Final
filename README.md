@@ -9,7 +9,7 @@ head is facing forward, and my left and right speed.
 
 ##About Some of My Methods
 `self.backwards()`
-The lazy method that I created is  kind of self explanatory, and slightly stupid.  When I was calibrating my robot I got **very** of having to get up every time and pick up my robot and bring it back.
+The lazy method that I created is  kind of self explanatory, and slightly stupid.  When I was calibrating my robot I got _very_* of having to get up every time and pick up my robot and bring it back.
 I thought to myself, "Wow I wish my robot could magically just come bcak to me".  Then I realized that I could.  Basically, I just made a method to move backwards a little bit and added it to my menu.
 
 `self.testDrive()`
