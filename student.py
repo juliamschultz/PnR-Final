@@ -21,15 +21,16 @@ class GoPiggy(pigo.Pigo):
     turn_track = 0.0
     TIME_PER_DEGREE = .02
     TURN_MODIFIER = .75
-
+    #TODO talk to Mr.A about which set speed method I should be deleting
     def setSpeed(self, l, r):
         set_left_speed(l)
         set_right_speed(r)
 
     #method to make my robot drive backwards to I don't have to pick it up everytime when I have to make sure that it is calibrated
+    #TODO change the name of the lazy method to something that has to so with its function and add print statements
     def lazy(self):
         self.encB(10)
-
+    #TODO move constructor above the two methods, under the instance variables
     # CONSTRUCTOR
     def __init__(self):
         print("Piggy has be instantiated!")
