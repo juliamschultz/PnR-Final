@@ -2,6 +2,10 @@
 The final project for my Programming and Robotics class.  My job was to move my robot from one side of an obstacle course to the other.  Using what I have learned in Mr. Adiletta's Programming and Robotics class I
 have programmed my robot to do just that.
 
+Here is a picture of my robot
+
+
+
 #Some Things To Know
 Mr. Adiletta has created a parent class,`pigo.py, that had the basic code to get us started.  In the pigo.py file Mr. Adiletta will also update it with handy new methods to help us out.  We worked in the student.py file.
 The first method that I made was the dance method.  At the very top of my code I have put some instance variables that remain constant throughout all my code.  Some of the variables include my midpoint, the point at which my robots
