@@ -10,7 +10,7 @@ head is facing forward, and my left and right speed.
 ##About Some of My Methods
 `self.backwards()`
 The lazy method that I created is  kind of self explanatory, and slightly stupid.  When I was calibrating my robot I got **very** of having to get up every time and pick up my robot and bring it back.
-I thought to myself, "Wow I wish my robot could magically just come bcak to me".  Then I realized that I could.  Basically, I just made a method to move backwards a little bit and added it to my menu.
+I thought to myself, "Wow I wish my robot could magically just come back to me".  Then I realized that I could.  Basically, I just made a method to move backwards a little bit and added it to my menu.
 
 `self.testDrive()`
 The cruise method is very important to my code because it makes going through the obstacle course **much** more quick and efficient.
@@ -36,4 +36,15 @@ You can set the exact value at which it turns or moves forward/backwards.
 The dance method is a method that the whole class has tinkered with before we went into programming our robot to maneuver through obstacles.  This method uses `self.encR()`, `self.encL()`, `self.encB()`, amd self.encF()` a lot.
 This method was basically created so that when my robot makes it through the course it can have a victory dance.
 
-##
+#Ideas for the future
+In the future I would like to continue to mess with the Kenny method, which basically was a better, more accurate turn method that just didn't really work for my robot.  I think that if I could perfect this then it will make
+my speed going through the obstacle course much faster.
+
+
+
+###What were some issues I ran into?
+This project, though very fun, was one of the most stressful projects I have ever done.  The sheer fact that missing a simple colon, or forgetting to capitalize a letter could mess up _everything_ up.
+The first issues that I had to overcome with this project was myself; I had to teach myself to not freak out so much every time one small thing went wrong.  One of the big problems that I ran into was my `self.testDrive()` was not
+functioning properly.  It would say that it was running when it clearly was not because it would stop when there was nothing in front of it.  To fix this we added an else statement.
+Another problem that I ran into was using the Kenny Method.  My turns were not very accurate even after I would tinker with the turn modifier and time per degree.  After a while I realized that I only had so much time before I
+needed to make sure my robot could make it through the obstacle course.  to fix this I simply removed the Kenny Method and went back to the `self.chooseBetter` method.
