@@ -4,7 +4,7 @@ have programmed my robot to do just that.
 
 Here is a picture of my robot
 
-
+![image of robot](https://drive.google.com/open?id=0B7iQr3-5mQc8em8tSlBfSGpCMjA)
 
 #Some Things To Know
 Mr. Adiletta has created a parent class,`pigo.py, that had the basic code to get us started.  In the pigo.py file Mr. Adiletta will also update it with handy new methods to help us out.  We worked in the student.py file.
