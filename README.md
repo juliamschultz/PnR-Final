@@ -2,7 +2,7 @@
 The final project for my Programming and Robotics class.  My job was to move my robot from one side of an obstacle course to the other.  Using what I have learned in Mr. Adiletta's Programming and Robotics class I
 have programmed my robot to do just that.
 
-Here is a picture of my robot
+Here is a picture of my robot!
 
 ![image of robot](https://drive.google.com/open?id=0B7iQr3-5mQc8em8tSlBfSGpCMjA)
 
